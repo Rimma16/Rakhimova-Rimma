@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Shop\BaseController;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class CategoryController extends BaseController
+class OrderProductController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,14 @@ class CategoryController extends BaseController
      */
     public function index()
     {
-        $items = Category::all();
-
-        return view('shop.categories.index',compact('items'));
+        $items = Order::all()
+        ->with([
+            'user' => function($query){
+                $query->select(['id','name','email']);
+            }
+        ])
+        ->paginate(10);
+        return view('shop.orders.index',compact('items'));
     }
 
     /**
@@ -50,7 +57,11 @@ class CategoryController extends BaseController
      */
     public function show($id)
     {
-        //
+        $item =Order::findOrFail($id);
+        
+        return view('shop.order.show',
+               compact('item'));
+         
     }
 
     /**

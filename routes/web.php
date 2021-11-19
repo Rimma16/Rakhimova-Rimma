@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace'=>'\App\Http\Controllers\Shop'],function(){
+    Route::resource('products','ProductController')->names('products');
+    Route::resource('categories','CategoryController')->names('categories');
+    Route::resource('orders','OrderController')->names('orders');
+
+}); 
