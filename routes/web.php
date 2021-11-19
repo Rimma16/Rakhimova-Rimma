@@ -20,6 +20,10 @@ Route::get('/', function () {
 Route::group(['namespace'=>'\App\Http\Controllers\Shop'],function(){
     Route::resource('products','ProductController')->names('products');
     Route::resource('categories','CategoryController')->names('categories');
-    Route::resource('orders','OrderController')->names('orders');
+    Route::resource('orders','OrderProductController')->names('orders');
 
 }); 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

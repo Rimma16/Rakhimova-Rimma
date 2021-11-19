@@ -18,8 +18,7 @@ class OrderProductController extends BaseController
      */
     public function index()
     {
-        $items = Order::all()
-        ->with([
+        $items = Order::with([
             'user' => function($query){
                 $query->select(['id','name','email']);
             }
