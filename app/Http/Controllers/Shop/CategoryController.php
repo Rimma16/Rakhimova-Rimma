@@ -18,7 +18,7 @@ class CategoryController extends BaseController
     {
         $items = Category::all();
 
-        return view('shop.categories.index',compact('items'));
+        return view('shop.category.index',compact('items'));
     }
 
     /**
