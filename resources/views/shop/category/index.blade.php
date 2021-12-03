@@ -1,13 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-Test
-<table>
+<div class="container">
+    <h1>Список товаров</h1>
+    <table class="table">
+        <thead> 
+            <tr>
+                 <th>#</th>
+                 <th>Дата создания</th> 
+                 <th>Название товара</th>
+                 <th>Описание</th>
+            </tr> 
+        </thead>
+        <tbody>
     @foreach($items as $item)
-          <tr>
+            <tr>
               <td>{{ $item->id }}</td>
+              <td>{{ $item->created_at }}</td>
               <td>{{ $item->category_name }}</td>
-         </tr> 
+              <td>{{ $item->description }}</td>
+            </tr> 
     @endforeach
-</table>
+        </tbody>
+   <table>
+</div>    
 @endsection
