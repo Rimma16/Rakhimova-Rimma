@@ -58,7 +58,7 @@ class OrderProductController extends BaseController
     {
         $item =Order::findOrFail($id);
         
-        return view('shop.order.show',
+        return view('shop.orders.detail',
                compact('item'));
          
     }
