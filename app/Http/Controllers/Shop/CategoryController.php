@@ -73,7 +73,7 @@ class CategoryController extends BaseController
         
     {
         $item = category::findOrFail($id);
-        $productList = Product::where('category_id','=',$item->id);
+        $productList = Product::where('category_id',$item->id)->get();
     
         return view('shop.category.detail',compact('item','productList'));
     }
