@@ -15,6 +15,7 @@
                  <th>Обновление</th>
                  <th>Удаление </th>
                  <th>Комментарий</th>
+                 <th>Перейти</th>
                  
             </tr> 
         </thead>
@@ -30,6 +31,7 @@
               <td>{{ $item->updated_at }}</td>
               <td>{{ $item->deleted_at }}</td>
               <td>{{ $item->comment }}</td>
+              <td> <a href="{{route('orders.show', $item->id)}}">Перейти </a> </td>
 
               
 

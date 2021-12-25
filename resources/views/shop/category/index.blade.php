@@ -16,7 +16,7 @@
     @foreach($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->category_name }}</td>
+              <td> <a href="{{route('categories.show', $item->id)}}">{{$item->category_name}} </a> </td>
               <td>{{ $item->description }}</td>
             </tr> 
     @endforeach
