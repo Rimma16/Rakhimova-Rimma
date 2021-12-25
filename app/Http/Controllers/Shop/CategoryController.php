@@ -60,7 +60,10 @@ class CategoryController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $item = Category::findOrFail($id);
+        $productList = Product::where('category_id', $item->id);
+
+        return view('shop.products.detail',compact('item', 'productList'));
     }
 
     /**

@@ -47,10 +47,9 @@ class ProductController extends BaseController
      */
     public function show($id)
     {
-        $item = Product::findOrFail($id);
-        
-        return view('shop.product.show',
-               compact('item'));
+
+               $item = Product::findOrFail($id);   
+               return view('shop.products.detail',compact('item'));
          
     }
 
