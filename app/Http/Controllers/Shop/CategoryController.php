@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Shop\BaseController;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends BaseController
@@ -50,7 +51,10 @@ class CategoryController extends BaseController
      */
     public function show($id)
     {
-        //
+        $item = Category::findOrFail($id);
+        $productList = Product::where('category_id', $item->id);
+
+        return view('shop.products.detail',compact('item', 'productList'));
     }
 
     /**
